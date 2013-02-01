@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Json client</title>
+    <link rel="stylesheet" href="json_client.css">
+  </head>
+  <body>
+    
+    <div id="container">
+      <button id="load">Load</button>
+      <button id="loadStructured">Load as JsonObject</button>
+      <button id="save">Save</button>
+      <hr>
+      <pre id="json_content" contentEditable="true"></pre>
+      <hr>
+      <pre id="log">Log Messages:
+      </pre>
+    </div>
+
+    <script type="application/dart" src="json_client.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

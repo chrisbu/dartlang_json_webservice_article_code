@@ -1,0 +1,5 @@
+name: json_client
+description: A sample web application
+dependencies:
+  json_object: any
+  browser: any
