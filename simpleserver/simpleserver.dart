@@ -20,7 +20,6 @@ void main() {
   httpServer.addRequestHandler((req) => req.method == "POST", handlePost);
   httpServer.addRequestHandler((req) => req.method == "OPTIONS", handleOptions);
   httpServer.defaultRequestHandler = defaultHandler;
-  // no default handler - returns 404 for any other method
   
   httpServer.listen(host,port);
   print("Listening for GET and POST on http://$host:$port");
@@ -79,13 +78,15 @@ void handlePost(HttpRequest req,res) {
  * and http://enable-cors.org/server.html
  */
 void addCorsHeaders(HttpResponse res) {
-  res.headers.add("Access-Control-Allow-Origin", "*");
+  res.headers.add("Access-Control-Allow-Origin", "*, ");
+  res.headers.add("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
   res.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 }
 
 void handleOptions(req,HttpResponse res) {
   addCorsHeaders(res);
-  res.statusCode = HttpStatus.ACCEPTED;  
+  print("${req.method}: ${req.path}");
+  res.statusCode = HttpStatus.NO_CONTENT;  
   res.outputStream.close();
 }
 
