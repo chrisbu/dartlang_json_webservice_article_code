@@ -18,14 +18,15 @@ void loadData(_) {
   var url = "http://$host/programming-languages";
 
   // call the web server asynchronously
-  var request = new HttpRequest.get(url, onDataLoaded);
+  var request = HttpRequest.getString(url).then(onDataLoaded);
 }
 
-onDataLoaded(req) {
+onDataLoaded(responseText) {
   print(" Data Loaded");
-  var jsonString = req.responseText;
+  var jsonString = responseText;
   query("#json_content").text = jsonString;   
 }
+
 
 // Load data an interperet using json object
 void loadStructuredData(_) {
@@ -35,12 +36,12 @@ void loadStructuredData(_) {
   
   
   // call the web server asynchronously
-  var request = new HttpRequest.get(url, onStructuredDataLoaded);
+  var request = HttpRequest.getString(url).then(onStructuredDataLoaded);
 }
 
-void onStructuredDataLoaded(req) {
+void onStructuredDataLoaded(responseText) {
   print(" Structured data loaded");
-  var jsonString = req.responseText;
+  var jsonString = responseText;
   query("#json_content").text = jsonString;
   
   print(" Converting to JsonObject");
