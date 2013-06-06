@@ -85,7 +85,7 @@ void saveData(_) {
   
   // POST the data to the server
   var url = "http://$host/programming-languages";
-  request.open("POST", url, false);
+  request.open("POST", url);
   request.send(JSON.stringify(jsonObject));
 }
 
