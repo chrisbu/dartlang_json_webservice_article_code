@@ -52,7 +52,7 @@ void handleGet(HttpRequest req) {
   }
   else {
     var err = "Could not find file: $DATA_FILE";
-    res.addString(err);
+    res.write(err);
     res.close();  
   }
   
@@ -106,7 +106,7 @@ void defaultHandler(HttpRequest req) {
   HttpResponse res = req.response;
   addCorsHeaders(res);
   res.statusCode = HttpStatus.NOT_FOUND;
-  res.addString("Not found: ${req.method}, ${req.uri.path}");
+  res.write("Not found: ${req.method}, ${req.uri.path}");
   res.close();
 }
 
