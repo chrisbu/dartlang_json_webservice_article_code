@@ -3,6 +3,7 @@ import 'package:json_object/json_object.dart';
 import 'dart:json' as JSON;
 
 import 'dart:core' as core;
+import 'dart:convert';
 
 
 var host = "127.0.0.1:8080";
@@ -85,8 +86,8 @@ void saveData(_) {
   
   // POST the data to the server
   var url = "http://$host/programming-languages";
-  request.open("POST", url, false);
-  request.send(JSON.stringify(jsonObject));
+  request.open("POST", url, async:false);
+  request.send(JSON.encode(jsonObject));
 }
 
 
